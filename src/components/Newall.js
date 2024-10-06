@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import Newsiteam from "./Newsiteam";
+import Spinner from "./Spinner";
+import Sidebar from "./Sidebar";
+
+
 
 export class Newall extends Component {
-  //default articale bcz some time api not work
+  //default articale array for state bcz some time api not work
   articles = [
     {
       source: { id: null, name: "CBS Sports" },
@@ -65,106 +69,131 @@ export class Newall extends Component {
     },
   ];
 
-  //constructor for state
+  //constructor using for define state in class component
   constructor(props) {
     super(props);
     this.state = {
       articles: this.articles,
       page: 1,
+      loding: false,
     };
   }
 
-  //componentDidMount for fetching data from api using newsapi key
-  async componentDidMount() {
-    let Url =
-      `https://newsapi.org/v2/everything?q=all&apiKey=a4ceefa53234470e984e1a7607629682&page=1&pageSize=${this.props.pageSize}`;
+  // ================================ fetching data using Api from newsapi ================================================
+
+  // apiUrl ="https://newsapi.org/v2/top-headlines?q=all&apiKey=a4ceefa53234470e984e1a7607629682";
+ 
+  apiUrl =" https://mocki.io/v1/e9f7909e-80d6-414b-97b4-0f6d9b234d41?";
+
+  async update() {
+    let Url = `${this.apiUrl}&page=1&pageSize=${this.props.pageSize}&category=${this.props.category}`;
+
+    this.setState({ loding: true });
+
     let data = await fetch(Url);
     let datajson = await data.json();
-    console.log(datajson);
+
     this.setState({
       articles: datajson.articles,
       totalResults: datajson.totalResults,
+      loding: false,
     });
   }
 
-  //function for previous  page 
+  async componentDidMount() {
+    this.update();
+  }
+
+  //function for previous page relode for news
   previousOnClick = async () => {
-      let Url = `https://newsapi.org/v2/everything?q=all&apiKey=a4ceefa53234470e984e1a7607629682&page=${
-        this.state.page - 1
-      }&pageSize=${this.props.pageSize}`;
-      let data = await fetch(Url);
-      let datajson = await data.json();
-      this.setState({
-        articles: datajson.articles,
-        page: this.state.page - 1,
-      });
-    
+    this.setState({
+      page: this.state.page - 1,
+    });
+    this.update();
+
   };
 
-    //function for next  page 
+  //function for next page relode for news
   nextOnClick = async () => {
-    if (this.state.page + 1 < Math.ceil(this.state.totalResults / 20)) {
-      let Url = `https://newsapi.org/v2/everything?q=all&apiKey=a4ceefa53234470e984e1a7607629682&page=${
-        this.state.page + 1
-      }&pageSize=${this.props.pageSize}`;
-      let data = await fetch(Url);
-      let datajson = await data.json();
+    if (this.state.page + 1 < Math.ceil(this.state.totalResults / this.props.pageSize)) {
+
       this.setState({
-        articles: datajson.articles,
-        page: this.state.page + 1,
+        page: this.state.page + 1
       });
+
+      this.update();
     }
   };
 
-  //render the class components
-  render() {
+  
+  // ================================ component render in index html ====================================================
+  render(props) {
     return (
       <>
+      {/* {console.log('Newall',this.props.category)} */}
         <h2 className="mt-4 mx-4">Top & populer News</h2>
-        <div className="" style={{ width: "70vw" }}>
-          <div className="row">
-            {this.state.articles.map((element) => {
-              return (
-                <div className="col-lg-4" key={element.url}>
-                  <Newsiteam
-                    imgUrl={
-                      element.urlToImage
-                        ? element.urlToImage
-                        : "https://i.ytimg.com/vi/0Bjm0CFyL20/maxresdefault_live.jpg"
-                    }
-                    title={
-                      element.title
-                        ? element.title.slice(0, 40)
-                        : element.description.slice(0, 40)
-                    }
-                    description={
-                      element.description
-                        ? element.description.slice(0, 80)
-                        : element.title.slice(0, 80)
-                    }
-                    newsUrl={element.url}
-                  />
-                </div>
-              );
-            })}
+
+        {this.state.loding && <Spinner />}
+
+        <div className="d-flex">
+          <div style={{ width: "70vw" }}>
+            <div className="row">
+              {this.state.articles.map((element) => {
+                return (
+                  !this.state.loding && (
+                    <div className="col-lg-4" key={element.title}>
+                      <Newsiteam
+                        imgUrl={
+                          element.urlToImage
+                            ? element.urlToImage
+                            : "https://i.ytimg.com/vi/0Bjm0CFyL20/maxresdefault_live.jpg"
+                        }
+                        title={
+                          element.title
+                            ? element.title.slice(0, 40)
+                            : element.description.slice(0, 40)
+                        }
+                        description={
+                          element.description
+                            ? element.description.slice(0, 80)
+                            : element.title.slice(0, 80)
+                        }
+                        newsUrl={element.url}
+                        
+                        newsSource={element.author?element.author:'SD news'}
+
+                        author={element.author?element.author:'Unknown'}
+                        time={element.publishedAt}
+                      />
+                    </div>
+                  )
+                );
+              })}
+            </div>
+            <div className=" d-flex justify-content-between my-4 mx-4">
+              <button
+                disabled={this.state.page <= 1}
+                type="button"
+                className="btn btn-dark"
+                onClick={this.previousOnClick}
+              >
+                &larr; previous
+              </button>
+              <button
+                disabled={
+                  this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize)
+                }
+                type="button"
+                className="btn btn-dark"
+                onClick={this.nextOnClick}
+              >
+                Next &rarr;
+              </button>
+            </div>
           </div>
-          <div className=" d-flex justify-content-between my-4 mx-4">
-            <button
-              disabled={this.state.page <= 1}
-              type="button"
-              className="btn btn-dark"
-              onClick={this.previousOnClick}
-            >
-              &larr; previous
-            </button>
-            <button
-              disabled={(this.state.page + 1 > Math.ceil(this.state.totalResults / 20))}
-              type="button"
-              className="btn btn-dark"
-              onClick={this.nextOnClick}
-            >
-              Next &rarr;
-            </button>
+
+          <div className="sidebar" style={{ width: "30vw", Height: "100vh" }}>
+          <Sidebar/>
           </div>
         </div>
       </>
