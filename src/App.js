@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "./components/Navbar";
-import Newall from "./components/Newall";
+import Main from "./components/Main";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default class App extends Component {
@@ -15,7 +15,7 @@ export default class App extends Component {
               exact
               path="/Business"
               element={
-                <Newall
+                <Main
                   key="business"
                   pageSize={this.pagesize} 
                   category={"business"}
@@ -26,7 +26,7 @@ export default class App extends Component {
               exact
               path="/Entertainment"
               element={
-                <Newall
+                <Main
                   key="entertainment"
                   pageSize={this.pagesize}
                   category={"entertainment"}
@@ -37,14 +37,14 @@ export default class App extends Component {
               exact
               path="/Sports"
               element={
-                <Newall key="sports" pageSize={this.pagesize} category={"sports"} />
+                <Main key="sports" pageSize={this.pagesize} category={"sports"} />
               }
             />
             <Route
               exact
               path="/technology"
               element={
-                <Newall
+                <Main
                   key="technology"
                   pageSize={this.pagesize}
                   category={"technology"}
@@ -55,7 +55,7 @@ export default class App extends Component {
               exact
               path="/General"
               element={
-                <Newall
+                <Main
                   key="general"
                   pageSize={this.pagesize} 
                   category={"general"}
@@ -65,13 +65,13 @@ export default class App extends Component {
             <Route
               exact
               path="/Health"
-              element={<Newall key="health" pageSize={this.pagesize} category={"health"} />}
+              element={<Main key="health" pageSize={this.pagesize} category={"health"} />}
             />
             <Route
               exact
               path="/Science"
               element={
-                <Newall
+                <Main
                   key="science"
                   pageSize={this.pagesize} 
                   category={"science"}
@@ -81,7 +81,7 @@ export default class App extends Component {
             <Route
               exact
               path="/"
-              element={<Newall pageSize={this.pagesize} category={"general"} />}
+              element={<Main pageSize={this.pagesize} category={"general"} />}
             />
           </Routes>
         </Router>
