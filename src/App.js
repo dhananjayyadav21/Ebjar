@@ -5,13 +5,16 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
 
 export default class App extends Component {
+  //define variables 
   pagesize = 12;
   apikey =process.env.REACT_APP_NEWSAPP_API;
 
+  //define state 
   state = {
     progress: 0,
   };
 
+  //update progres through setProgress function using setState
   setProgress = (progress) => {
     this.setState({
       progress:progress,
