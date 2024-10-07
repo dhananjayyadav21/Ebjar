@@ -21,7 +21,7 @@ export class Main extends Component {
 
   // ================================ fetching data using Api from newsapi ================================================
   apiUrl =
-    "https://newsapi.org/v2/top-headlines?q=all&apiKey=f93bde8b0bec4a6681faf429321d3b18";
+    `https://newsapi.org/v2/top-headlines?q=all&apiKey=${this.props.apikey}`;
 
   // apiUrl = " https://mocki.io/v1/e9f7909e-80d6-414b-97b4-0f6d9b234d41?";
   async update() {

@@ -6,6 +6,7 @@ import LoadingBar from "react-top-loading-bar";
 
 export default class App extends Component {
   pagesize = 12;
+  apikey =process.env.REACT_APP_NEWSAPP_API;
 
   state = {
     progress: 0,
@@ -29,6 +30,7 @@ export default class App extends Component {
               path="/Business"
               element={
                 <Main
+                apikey={this.apikey}
                   setProgress={this.setProgress}
                   key="business"
                   pageSize={this.pagesize}
@@ -40,7 +42,8 @@ export default class App extends Component {
               exact
               path="/Entertainment"
               element={
-                <Main
+                <Main 
+                  apikey={this.apikey} 
                   setProgress={this.setProgress}
                   key="entertainment"
                   pageSize={this.pagesize}
@@ -52,7 +55,8 @@ export default class App extends Component {
               exact
               path="/Sports"
               element={
-                <Main
+                <Main 
+                  apikey={this.apikey}
                   setProgress={this.setProgress}
                   key="sports"
                   pageSize={this.pagesize}
@@ -64,7 +68,8 @@ export default class App extends Component {
               exact
               path="/technology"
               element={
-                <Main
+                <Main 
+                  apikey={this.apikey}
                   setProgress={this.setProgress}
                   key="technology"
                   pageSize={this.pagesize}
@@ -76,7 +81,8 @@ export default class App extends Component {
               exact
               path="/General"
               element={
-                <Main
+                <Main 
+                  apikey={this.apikey}
                   setProgress={this.setProgress}
                   key="general"
                   pageSize={this.pagesize}
@@ -100,7 +106,8 @@ export default class App extends Component {
               exact
               path="/Science"
               element={
-                <Main
+                <Main 
+                  apikey={this.apikey}
                   key="science"
                   pageSize={this.pagesize}
                   category={"science"}
@@ -111,7 +118,8 @@ export default class App extends Component {
               exact
               path="/"
               element={
-                <Main
+                <Main 
+                  apikey={this.apikey}
                   setProgress={this.setProgress}
                   pageSize={this.pagesize}
                   category={"general"}
