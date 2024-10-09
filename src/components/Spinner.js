@@ -6,7 +6,7 @@ const Spinner = () => {
     <>
       <div
         className="text-center d-flex justify-content-center"
-        style={{ width: "70vw", marginTop: "30vh", marginBottom: "30vh" }}
+        style={{ width: "70vw", marginTop: "30px", marginBottom: "30px" }}
       >
         <img src={loding} alt="loding" />
       </div>

@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <>
       <div>
-        <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark py-2">
+        <nav className={`navbar navbar-expand-lg navbar-${props.navmode} bg-${props.navmode}`}>
           <div className="container-fluid">
             <Link className="navbar-brand" to="/">
               SD News
@@ -88,6 +88,17 @@ const Navbar = () => {
                   </ul>
                 </li>
               </ul>
+
+              <div className="form-check form-switch mx-1  mx-md-4 my-2">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckChecked"
+                onClick={props.toggleMode}
+              />
+            </div>
+
               <form className="d-flex" role="search">
                 <input
                   className="form-control me-2"
@@ -95,7 +106,7 @@ const Navbar = () => {
                   placeholder="Search"
                   aria-label="Search"
                 />
-                <button className="btn btn-outline-secondary" type="submit">
+                <button className="btn btn-secondary" type="submit">
                   Search
                 </button>
               </form>

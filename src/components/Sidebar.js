@@ -29,10 +29,10 @@ const Sidebar = () => {
         id="scrollablesidebar"
         style={{ border: "2px solid", borderRadius: "8px" , height: "80vh", overflow: "auto",padding:10}}
       >
-        {Art.map((el) => {
+        {Art.map((el,i) => {
           return (
             <div
-              key={el.urlToImage}
+              key={i}
               className="card my-2 my-md-3 mx-2 mx-lg-3"
               style={{ width: "90%" }}
             >

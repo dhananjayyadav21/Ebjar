@@ -1,90 +1,86 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import Newsiteam from "./Newsiteam";
 import Spinner from "./Spinner";
 import Sidebar from "./Sidebar";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-export class Main extends Component {
-  //default articale array for state bcz some time api not work
-  articles = [];
+const Main = (props) => {
+  //This is Empty array which is use in state inilization
+  const article = [];
 
+  //Define state using default values
+  const [Articles, setArticles] = useState(article);
+  const [Loding, setLoding] = useState(true);
+  const [Page, setPage] = useState(1);
 
-  //constructor using for define state in class component
-  constructor(props) {
-    super(props);
-    this.state = {
-      articles: this.articles,
-      page: 1,
-      loding: false,
-      totalResults: 0,
-    };
-  }
+  // ================================ fetching data using Api from newsapi ======================================================
 
-  // ================================ fetching data using Api from newsapi ================================================
-  // apiUrl =
-  //   `https://newsapi.org/v2/top-headlines?q=all&apiKey=${this.props.apikey}`;
+  // const apiUrl =`https://newsapi.org/v2/top-headlines?q=all&apiKey=${props.apikey}`;
 
-  apiUrl = " https://mocki.io/v1/e9f7909e-80d6-414b-97b4-0f6d9b234d41?";
-  async update() {
-    this.props.setProgress(0);
-    let Url = `${this.apiUrl}&page=1&pageSize=${this.props.pageSize}&category=${this.props.category}`;
-    this.setState({ loding: true });
+  const apiUrl = " https://mocki.io/v1/e9f7909e-80d6-414b-97b4-0f6d9b234d41?";
+
+  const update = async () => {
+    props.setProgress(0);
+    let Url = `${apiUrl}&page=${Page}&pageSize=${props.pageSize}&category=${props.category}`;
+    setLoding(true);
     let data = await fetch(Url);
     let datajson = await data.json();
-    this.setState({
-      articles: datajson.articles,
-      totalResults: datajson.totalResults,
-      loding: false,
-    });
-    this.props.setProgress(100);
-  }
-
-  //componentDidMount function which is update state
-  async componentDidMount() {
-    this.update();
-  }
-
-  //function for relode more data in InfiniteScroll
-  fetchMoreData = async () => {
-    this.setState({
-      page: this.state.page + 1,
-    });
-    let Url = `${this.apiUrl}&page=1&pageSize=${this.props.pageSize}&category=${this.props.category}`;
-    let data = await fetch(Url);
-    let datajson = await data.json();
-    console.log(datajson);
-    this.setState({
-      articles: this.state.articles.concat(datajson.articles),
-      totalResults: datajson.totalResults,
-    });
-    console.log(datajson);
+    setArticles(datajson.articles);
+    setLoding(false);
+    props.setProgress(100);
   };
 
+  useEffect(() => {
+    update();
+    // eslint-disable-next-line
+  }, []);
+
+  //fetchMoreData for relode more data in InfiniteScroll
+  const fetchMoreData = () => {
+    setTimeout(async () => {
+      let Url = `${apiUrl}&page=${Page - 1}&pageSize=${
+        props.pageSize
+      }&category=${props.category}`;
+      setPage(Page + 1);
+      let data = await fetch(Url);
+      let datajson = await data.json();
+      setArticles(Articles.concat(datajson.articles));
+    }, 1500);
+  };
+
+  const capitlize = (str)=>{
+    return str.toUpperCase();
+  }
+
   // ================================ component render in index html ====================================================
-  render(props) {
-    return (
-      <><div className="container-fluid">
-        <h2 className=" mx-4" style={{ marginTop: "70px" }}>
-          Top & populer News
-        </h2>
+
+  return (
+    <>
+      <div className="container-fluid" style={props.mode}>
+        <hr/>
+        <h2 className=" mx-4 text-center"><b>TOP & LATEST NEWS - {capitlize(props.category)}</b></h2>
+        <hr/>
 
         <div className="row my-4">
-          <div className="col-9" id="scrollableDiv" style={{ height: "80vh", overflow: "auto" }}>
+          <div
+            className="col-9"
+            id="scrollableDiv"
+            style={{ height: "80vh", overflow: "auto" }}
+          >
             <InfiniteScroll
-              dataLength={this.state.articles.length}
-              next={this.fetchMoreData}
-              hasMore={this.state.articles.length !== this.state.totalResults}
+              dataLength={Articles.length}
+              next={fetchMoreData}
+              hasMore={true}
               scrollableTarget="scrollableDiv"
-              loader={<Spinner />}>
-             
+              loader={<Spinner />}
+            >
+              <div className="container-fluid">
                 <div className="row">
-                  {this.state.loding && <Spinner />}
-
-                  {this.state.articles.map((element) => {
+                  {Articles.map((element, i) => {
                     return (
                       <>
-                        {!this.state.loding && (
-                          <div className="col-lg-4" key={element.url}>
+                        {!Loding && (
+                          <div className="col-lg-4" key={i}>
                             <Newsiteam
                               imgUrl={
                                 element.urlToImage
@@ -116,19 +112,17 @@ export class Main extends Component {
                     );
                   })}
                 </div>
-              
+              </div>
             </InfiniteScroll>
           </div>
 
-          <div
-            className="sidebar col-3">
+          <div className="sidebar col-3">
             <Sidebar />
           </div>
         </div>
-        </div>
-      </>
-    );
-  }
-}
+      </div>
+    </>
+  );
+};
 
 export default Main;
