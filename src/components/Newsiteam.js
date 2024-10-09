@@ -5,7 +5,7 @@ const Newsiteam = (props) => {
 
   return (
     <>
-      <div className="my-4 mx-md-4 mx-2" style={{width:'100%'}}>
+      <div className="my-4 mx-md-4 mx-2">
         <div className="card" style={{ width: "100%" }}>
           <span
             className="badge rounded-pill text-bg-warning"

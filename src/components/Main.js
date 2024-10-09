@@ -56,7 +56,7 @@ const Main = (props) => {
 
   return (
     <>
-      <div className="container-fluid" style={props.mode}>
+      <div className="container-fluid" style={props.mode} id="main">
         <hr/>
         <h2 className=" mx-4 text-center"><b>TOP & LATEST NEWS - {capitlize(props.category)}</b></h2>
         <hr/>
@@ -116,7 +116,7 @@ const Main = (props) => {
             </InfiniteScroll>
           </div>
 
-          <div className="sidebar col-3">
+          <div className="sidebar col-3 sidebar">
             <Sidebar />
           </div>
         </div>

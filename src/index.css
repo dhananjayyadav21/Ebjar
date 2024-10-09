@@ -1,28 +1,32 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
+/*=============================================== hide scrollbar in main component ====================================================*/
 
-#scrollableDiv::-webkit-scrollbar,#scrollablesidebar::-webkit-scrollbar {
+#scrollableDiv::-webkit-scrollbar,
+#scrollablesidebar::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-#scrollableDiv,#scrollablesidebar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+#scrollableDiv,
+#scrollablesidebar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
+/*================================================ hr tag for top heading =============================================================*/
 hr {
   border: none;
   border-top: 5px double #ff0000;
@@ -34,8 +38,26 @@ hr {
 
 hr::after {
   background: #fff;
-  content: '§';
+  content: "§";
   padding: 0 4px;
   position: relative;
   top: -13px;
+}
+
+/*================================================ hr tag for top heading =============================================================*/
+
+
+
+@media screen and (max-width:500px) {
+  .sidebar{
+     display: none;
+  }
+
+  #scrollableDiv{
+    width: 100%;
+  }
+
+  #spiner{
+    margin-left: 12vw;
+  }
 }
