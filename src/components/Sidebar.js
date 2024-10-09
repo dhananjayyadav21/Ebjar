@@ -25,14 +25,15 @@ const Sidebar = () => {
   return (
     <>
       <div
-        className="mx-md-4 my-4"
-        style={{ border: "2px solid", borderRadius: "8px" }}
+        className=""
+        id="scrollablesidebar"
+        style={{ border: "2px solid", borderRadius: "8px" , height: "80vh", overflow: "auto",padding:10}}
       >
         {Art.map((el) => {
           return (
             <div
               key={el.urlToImage}
-              className="card my-2 my-md-4 mx-2 mx-lg-4"
+              className="card my-2 my-md-3 mx-2 mx-lg-3"
               style={{ width: "90%" }}
             >
               <img

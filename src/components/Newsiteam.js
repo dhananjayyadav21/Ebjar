@@ -18,7 +18,7 @@ const Newsiteam = (props) => {
           >
             {newsSource}
           </span>
-          <img src={imgUrl} className="card-img-top" alt="pictur" />
+          <img src={imgUrl} className="card-img-top" alt="pictur" style={{height:'200px', objectFit:'cover', width:'auto'}} />
           <div className="card-body">
             <h5 className="card-title">{title}</h5>
             <p className="card-text">{description}</p>
