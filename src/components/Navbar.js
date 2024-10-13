@@ -32,8 +32,8 @@ const Navbar = (props) => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/">
-                    Blog
+                  <Link className="nav-link" to="/about">
+                    About
                   </Link>
                 </li>
                 <li className="nav-item dropdown">
@@ -48,41 +48,28 @@ const Navbar = (props) => {
                   </Link>
                   <ul className="dropdown-menu">
                     <li>
-                      <Link className="dropdown-item" to="/Business">
-                        Business
+                      <Link className="dropdown-item" to="/electronics">
+                      Electronics
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" to="/Entertainment">
-                        Entertainment
+                      <Link className="dropdown-item" to="/jewelery">
+                      Jewelery
                       </Link>
                     </li>
-                    <li>
-                      <Link className="dropdown-item" to="/Sports">
-                        Sports
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="/technology">
-                        technology
-                      </Link>
-                    </li>
+                    
                     <li>
                       <hr className="dropdown-divider" />
                     </li>
+
                     <li>
-                      <Link className="dropdown-item" to="/General">
-                        General
+                      <Link className="dropdown-item" to="/men's clothing">
+                      Men's clothing
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" to="/Health">
-                        Health
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="/Science">
-                        Science
+                      <Link className="dropdown-item" to="/women's clothing">
+                      Women's clothing
                       </Link>
                     </li>
                   </ul>

@@ -3,17 +3,13 @@ import Navbar from "./components/Navbar";
 import Main from "./components/Main";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
+import About from "./components/About";
 
 const App = (props) => {
   //define variables
-  const pagesize = 12;
-  const apikey = process.env.REACT_APP_NEWSAPP_API;
 
   //define state
   const [Progress, setProgress] = useState(0);
-
-
-  
 
   //==============================================[ Enable Dark/Light mode]=====================================================
 
@@ -56,95 +52,57 @@ const App = (props) => {
             element={
               <Main
                 mode={mode}
-                apikey={apikey}
                 setProgress={setProgress}
                 key="business"
-                pageSize={pagesize}
                 category={"business"}
               />
             }
           />
           <Route
             exact
-            path="/Entertainment"
+            path="/electronics"
             element={
               <Main
-                apikey={apikey}
                 mode={mode}
                 setProgress={setProgress}
-                key="entertainment"
-                pageSize={pagesize}
-                category={"entertainment"}
+                key="electronics"
+                category={"electronics"}
               />
             }
           />
           <Route
             exact
-            path="/Sports"
+            path="/jewelery"
             element={
               <Main
-                apikey={apikey}
                 mode={mode}
                 setProgress={setProgress}
-                key="sports"
-                pageSize={pagesize}
-                category={"sports"}
+                key="jewelery"
+                category={"jewelery"}
               />
             }
           />
           <Route
             exact
-            path="/technology"
+            path="/men's clothing"
             element={
               <Main
-                apikey={apikey}
                 mode={mode}
                 setProgress={setProgress}
-                key="technology"
-                pageSize={pagesize}
-                category={"technology"}
+                key="men's clothing"
+                category={"men's clothing"}
               />
             }
           />
           <Route
             exact
-            path="/General"
+            path="/women's clothing"
             element={
               <Main
-                apikey={apikey}
                 mode={mode}
                 setProgress={setProgress}
-                key="general"
-                pageSize={pagesize}
-                category={"general"}
-              />
-            }
-          />
-          <Route
-            exact
-            path="/Health"
-            element={
-              <Main
-                apikey={apikey}
-                mode={mode}
-                setProgress={setProgress}
-                key="health"
-                pageSize={pagesize}
-                category={"health"}
-              />
-            }
-          />
-          <Route
-            exact
-            path="/Science"
-            element={
-              <Main
-                apikey={apikey}
-                mode={mode}
-                setProgress={setProgress}
-                key="science"
-                pageSize={pagesize}
-                category={"science"}
+                key="women's clothing"
+                category={"women's clothing"}
               />
             }
           />
@@ -153,13 +111,18 @@ const App = (props) => {
             path="/"
             element={
               <Main
-                apikey={apikey}
                 mode={mode}
                 setProgress={setProgress}
-                kye="general"
-                pageSize={pagesize}
-                category={"general"}
+                key="men's clothing"
+                category={"men's clothing"}
               />
+            }
+          />
+          <Route
+            exact
+            path="/about"
+            element={
+              <About setProgress={setProgress}/>
             }
           />
         </Routes>

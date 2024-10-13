@@ -10,10 +10,10 @@ const Sidebar = () => {
 
   //Update function use for update UseEfect
   const update = async () => {
-    let url = "https://mocki.io/v1/e9f7909e-80d6-414b-97b4-0f6d9b234d41?";
+    let url = "https://fakestoreapi.com/products/category/jewelery";
     let data = await fetch(url);
     let responce = await data.json();
-    setArt(responce.articles);
+    setArt(responce);
   };
 
   useEffect(() => {
@@ -23,11 +23,11 @@ const Sidebar = () => {
   //======================================= render element in sidebar component ================================================
 
   return (
-    <>
+    <> 
       <div
         className=""
         id="scrollablesidebar"
-        style={{ border: "2px solid", borderRadius: "8px" , height: "80vh", overflow: "auto",padding:10}}
+        style={{ border: "2px solid", borderRadius: "8px" , height: "88vh", overflow: "auto",padding:10}}
       >
         {Art.map((el,i) => {
           return (
@@ -38,12 +38,13 @@ const Sidebar = () => {
             >
               <img
                 src={
-                  el.urlToImage
-                    ? el.urlToImage
+                  el.image
+                    ? el.image
                     : "https://i.ytimg.com/vi/0Bjm0CFyL20/maxresdefault_live.jpg"
                 }
-                className="card-img-top"
+                className="card-img-top px-2 py-2"
                 alt="addimage"
+                style={{height:'250px', objectFit:'contain'}}
               />
               <div className="card-body">
                 <h5 className="card-title">
@@ -58,16 +59,16 @@ const Sidebar = () => {
                 </p>
               </div>
               <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  {el.author ? el.author : "Unknown"}
+                <li className="list-group-item green-font">
+                  <b> $ {el.price ? el.price : "Unknown"}</b>
                 </li>
                 <li className="list-group-item">
-                  {el.publishedAt ? el.publishedAt : "Unknown"}
+                <b> Rate : {el.rating.rate ? el.rating.rate : "Unknown"}</b>
                 </li>
               </ul>
-              <div className="card-body">
-                <Link to="/" className="card-link">
-                  {el.url ? el.url : "Nothing"}
+              <div className="card-body ">
+                <Link to="/" className="card-link red-font">
+                   View Products
                 </Link>
               </div>
             </div>

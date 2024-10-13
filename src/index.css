@@ -12,6 +12,18 @@ code {
     monospace;
 }
 
+.green-font{
+  color: rgb(14, 136, 14);
+}
+
+.red-font{
+  color: red;
+}
+
+.top-margin-5px{
+  margin-top: 5px;
+}
+
 /*=============================================== hide scrollbar in main component ====================================================*/
 
 #scrollableDiv::-webkit-scrollbar,
@@ -29,7 +41,7 @@ code {
 /*================================================ hr tag for top heading =============================================================*/
 hr {
   border: none;
-  border-top: 5px double #ff0000;
+  border-top: 5px double #161614;
   color: #333;
   overflow: visible;
   text-align: center;
