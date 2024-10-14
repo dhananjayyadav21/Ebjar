@@ -14,20 +14,20 @@ const App = (props) => {
   //==============================================[ Enable Dark/Light mode]=====================================================
 
   const [navmode, setNavmode] = useState("dark");
-  //abhi light mode hai ise karna baki hai
+  
   const [mode, setMode] = useState({
     color: "black",
     backgroundColor: "white",
   });
 
   const changeMode = () => {
-    if (navmode === "dark") {
+    if (navmode === "dark" ) {
       setMode({
-        color: "black",
-        backgroundColor: "white",
+        color: "white",
+        backgroundColor: "black",
       });
-      setNavmode("dark");
-      document.body.style.backgroundColor = "white";
+      setNavmode("light");
+      document.body.style.backgroundColor = "black";
     } else {
       setMode({
         color: "black",
@@ -122,7 +122,7 @@ const App = (props) => {
             exact
             path="/about"
             element={
-              <About setProgress={setProgress}/>
+              <About setProgress={setProgress} mode={mode}/>
             }
           />
         </Routes>

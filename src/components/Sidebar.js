@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   //This is empty aaray for articales(Art)
   const array = [];
 
@@ -24,6 +24,7 @@ const Sidebar = () => {
 
   return (
     <> 
+    <div style={props.cardmode}>
       <div
         className=""
         id="scrollablesidebar"
@@ -33,9 +34,7 @@ const Sidebar = () => {
           return (
             <div
               key={i}
-              className="card my-2 my-md-3 mx-2 mx-lg-3"
-              style={{ width: "90%" }}
-            >
+              className="card my-2 my-md-3 mx-2 mx-lg-3 sidebar-contaienre-width">
               <img
                 src={
                   el.image
@@ -46,7 +45,7 @@ const Sidebar = () => {
                 alt="addimage"
                 style={{height:'250px', objectFit:'contain'}}
               />
-              <div className="card-body">
+              <div className="card-body" style={props.cardmode}>
                 <h5 className="card-title">
                   {el.title
                     ? el.title.slice(0, 20)
@@ -58,15 +57,17 @@ const Sidebar = () => {
                     : el.title.slice(0, 40)}
                 </p>
               </div>
+
               <ul className="list-group list-group-flush">
-                <li className="list-group-item green-font">
+                <li className="list-group-item green-font" style={props.cardmode}>
                   <b> $ {el.price ? el.price : "Unknown"}</b>
                 </li>
-                <li className="list-group-item">
+                <li className="list-group-item" style={props.cardmode}>
                 <b> Rate : {el.rating.rate ? el.rating.rate : "Unknown"}</b>
                 </li>
               </ul>
-              <div className="card-body ">
+            
+              <div className="card-body" style={props.cardmode}>
                 <Link to="/" className="card-link red-font">
                    View Products
                 </Link>
@@ -74,6 +75,7 @@ const Sidebar = () => {
             </div>
           );
         })}
+      </div>
       </div>
     </>
   );

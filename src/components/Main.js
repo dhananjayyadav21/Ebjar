@@ -41,7 +41,7 @@ const Main = (props) => {
       let data = await fetch(Url);
       let datajson = await data.json();
       setArticles(Articles.concat(datajson));
-    }, 1500);
+    }, );
   };
 
   const capitlize = (str) => {
@@ -64,11 +64,11 @@ const Main = (props) => {
               next={fetchMoreData}
               hasMore={true}
               scrollableTarget="scrollableDiv"
-              loader={<Spinner />}
+              loader={<Spinner/>}
             >
               <div className="container-fluid">
                 <div className="row">
-                  <hr />
+                  <hr/>
                   <h4 className=" text-center"><b>TOP & LATEST PRODUCTS - {capitlize(props.category)}</b></h4>
                   <hr />
                   {Articles.map((element, i) => {
@@ -98,6 +98,8 @@ const Main = (props) => {
                                   : "4.5"
                               }
                               price={element.price}
+
+                              cardmode={props.mode}
                             />
                           </div>
                         )}
@@ -110,7 +112,7 @@ const Main = (props) => {
           </div>
 
           <div className="sidebar col-3 sidebar">
-            <Sidebar />
+            <Sidebar cardmode={props.mode} />
           </div>
         </div>
       </div>

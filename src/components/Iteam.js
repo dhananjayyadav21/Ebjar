@@ -1,12 +1,12 @@
 import React from "react";
 
 const Iteam = (props) => {
-  let { imgUrl, title, description, rate, price } = props;
+  let { imgUrl, title, description, rate, price,cardmode } = props;
 
   return (
     <>
       <div className="my-4 mx-md-4 mx-2">
-        <div className="card" style={{ width: "100%" }}>
+        <div className="card">
           <span
             className="badge rounded-pill text-bg-warning"
             style={{
@@ -19,7 +19,7 @@ const Iteam = (props) => {
            Rate : {rate}
           </span>
           <img src={imgUrl} className="card-img-top py-2 px-2" alt="pictur" style={{height:'200px', objectFit:'contain', width:'auto'}} />
-          <div className="card-body">
+          <div className="card-body" style={cardmode}>
             <h5 className="card-title">{title}...</h5>
             <p className="card-text">{description}...</p>
             <h4 className="card-text green-font">

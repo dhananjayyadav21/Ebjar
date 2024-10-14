@@ -3,13 +3,14 @@ import React from "react";
 function About(props) {
   
     const lodingbar = ()=>{
-        props.setProgress(0);
+        props.setProgress(10);
         props.setProgress(100);
     }
 
   return (
     <>
-    <div className="container my-4" onLoad={lodingbar}>
+    <div className="container my-4" onLoad={lodingbar} style={props.mode}>
+     <h1 className="mt-5 mb-2 ">About</h1>
       <div class="accordion" id="accordionPanelsStayOpenExample">
         <div class="accordion-item">
           <h2 class="accordion-header">
@@ -21,22 +22,17 @@ function About(props) {
               aria-expanded="true"
               aria-controls="panelsStayOpen-collapseOne"
             >
-              Accordion Item #1
+              1. Product Catalog
             </button>
           </h2>
           <div
             id="panelsStayOpen-collapseOne"
             class="accordion-collapse collapse show"
           >
-            <div class="accordion-body">
-              <strong>This is the first item's accordion body.</strong> It is
-              shown by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+            <div class="accordion-body" style={props.mode}>
+              <strong>The product catalog displays the available items.</strong>
+               often categorized for easy navigation. Each product typically has detailed descriptions, images, pricing, reviews, and   <code>.specifications</code>,
+               to help customers make informed decisions.
             </div>
           </div>
         </div>
@@ -50,22 +46,17 @@ function About(props) {
               aria-expanded="false"
               aria-controls="panelsStayOpen-collapseTwo"
             >
-              Accordion Item #2
+              2. Mobile Responsiveness
             </button>
           </h2>
           <div
             id="panelsStayOpen-collapseTwo"
             class="accordion-collapse collapse"
           >
-            <div class="accordion-body">
-              <strong>This is the second item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+            <div class="accordion-body" style={props.mode}>
+              <strong>With a significant amount of traffic coming from mobile devices.</strong>
+               it's essential for an e-commerce website to be mobile-friendly. Responsive design ensures that the site adapts to different screen sizes, providing <code>.an-optimal </code>,
+               shopping experience on smartphones and tablets.
             </div>
           </div>
         </div>
@@ -79,22 +70,17 @@ function About(props) {
               aria-expanded="false"
               aria-controls="panelsStayOpen-collapseThree"
             >
-              Accordion Item #3
+              3. SEO and Marketing Tools
             </button>
           </h2>
           <div
             id="panelsStayOpen-collapseThree"
             class="accordion-collapse collapse"
           >
-            <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+            <div class="accordion-body" style={props.mode}>
+              <strong>To attract customers, e-commerce websites.</strong>
+               should be optimized for search engines (SEO) and incorporate marketing tools like email newsletters, discounts, and promotions. Social media integration and <code>.Google Analytics help</code>,
+               businesses track performance and improve engagement.
             </div>
           </div>
         </div>

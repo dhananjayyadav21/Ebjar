@@ -24,6 +24,14 @@ code {
   margin-top: 5px;
 }
 
+.width-100100percent{
+   width: 100%;
+}
+
+.sidebar-contaienre-width{
+  width: 90%;
+}
+
 /*=============================================== hide scrollbar in main component ====================================================*/
 
 #scrollableDiv::-webkit-scrollbar,
@@ -41,20 +49,13 @@ code {
 /*================================================ hr tag for top heading =============================================================*/
 hr {
   border: none;
-  border-top: 5px double #161614;
-  color: #333;
+  border-top: 5px double #ff5100;
+  color: #000000;
   overflow: visible;
   text-align: center;
   height: 1px;
 }
 
-hr::after {
-  background: #fff;
-  content: "§";
-  padding: 0 4px;
-  position: relative;
-  top: -13px;
-}
 
 /*================================================ hr tag for top heading =============================================================*/
 
