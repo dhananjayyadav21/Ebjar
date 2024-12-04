@@ -3,8 +3,8 @@
 
 ## E-bjar
 ![1](https://github.com/user-attachments/assets/d4379774-035f-4b3e-ac7c-5b16233a7fef)
-
-
+![2](https://github.com/user-attachments/assets/298b2d73-1e41-45d5-985d-5b985cbedad6)
+![3](https://github.com/user-attachments/assets/f57e5cff-8a25-41f0-9f92-ca6acd93d3bc)
 
 # Getting Started with Create React App
 
